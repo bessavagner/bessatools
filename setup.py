@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='bessatools',
+    name='toolma',
     version='1.0.0.dev1',
     author="Vagner Bessa",
     author_email="bessavagner@gmail.com",
     description="A personal utility package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/bessavagner/bessatools",
+    url="https://github.com/bessavagner/toolmate",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
