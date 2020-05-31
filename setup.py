@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='bessatools',
-    version='0.1',
+    version='1.0.0.dev1',
     author="Vagner Bessa",
     author_email="bessavagner@gmail.com",
     description="A personal utility package",

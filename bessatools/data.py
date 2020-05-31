@@ -3,7 +3,7 @@
 
 import numpy as np
 import os
-from files import mkdir
+from .files import mkdir
 
 def mirrorborders(data_):
     """Expand a 2D numpy array by mirroning the borders

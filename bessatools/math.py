@@ -1,11 +1,12 @@
 import numpy as np
 import scipy.fftpack as scifft
-from data import mirrorborders
+from .data import mirrorborders
 
 
 def random2D(Nx, Ny, ampmax=1, ampmin=0, dtype=float):
     if isinstance(np.complex, dtype):
-        u = np.array(ampmax*(np.random.rand(Nx, Ny) + np.random.rand(Nx, Ny)
+        u = np.array(ampmax*(np.random.rand(Nx, Ny) +
+                        np.random.rand(Nx, Ny)
                      * (1j))/np.sqrt(2), dtype=np.complex) + ampmin
     else:
         u = np.array(ampmax*np.random.rand(Nx, Ny) + ampmin) + ampmin
