@@ -1,10 +1,10 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("DESCRIPTION.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='toolma',
+    name='toolmate',
     version='1.0.0.dev1',
     author="Vagner Bessa",
     author_email="bessavagner@gmail.com",

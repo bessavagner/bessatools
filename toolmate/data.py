@@ -3,7 +3,57 @@
 
 import numpy as np
 import os
-from .files import mkdir
+from collections.abc import Sequence
+from toolmate.files import mkdir
+
+
+def allsametype(seq):
+    """Tests if seq's elements are all the same type
+
+    Arguments:
+        seq {sequence} -- nay sequence to be tested
+
+    Returns:
+        type(seq)/False -- if all has the same type/ if any has different type
+    """
+    iseq = iter(seq)
+    first_type = type(next(iseq))
+    return first_type if not all( (type(x) is first_type) for x in iseq ) else True
+
+
+def isndarray(arr):
+    if type(arr).__name__ != ndarray():
+        return False
+    return True
+
+
+def ndarray():
+    return type(np.array([]))
+
+
+def shape(lst, _shape=()):
+    """
+    Returns the shape of nested lists similarly to numpy's shape.
+    Acknowledgment: https://stackoverflow.com/a/51961249/13599189
+
+    Arguments:
+        lst: the nested list
+        shape: the shape up to the current recursion depth (default: ())
+    Returns:
+        the shape including the current depth
+        (finally this will be the full depth)
+    """
+    if not isinstance(lst, (Sequence, ndarray())):
+        return _shape
+    if isinstance(lst[0], Sequence):
+        l = len(lst[0])
+        if not all(len(item) == l for item in lst):
+            msg = 'not all lists have the same length'
+            raise ValueError(msg)
+    _shape += (len(lst), )
+    _shape = shape(lst[0], _shape)
+    return _shape
+
 
 def mirrorborders(data_):
     """Expand a 2D numpy array by mirroning the borders

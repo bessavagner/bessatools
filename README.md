@@ -25,7 +25,7 @@
 
 A personal utility package, wich might be useful to you.
 
- Bessatools contains bunch of python small tools for scientific programing.
+Toolmate contains bunch of python small tools for scientific programing.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -56,7 +56,7 @@ To be added.
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [numpy](https://www.numpy.org/)
-- [scipy](https://schipy.org/)
+- [scipy](https://scipy.org/)
 - [matplotlib](https://matplotlib.org/)
 
 ## ✍️ Authors <a name = "authors"></a>
