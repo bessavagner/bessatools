@@ -1,10 +1,11 @@
 #  DATA TOOLS
 #  ---
 
-import numpy as np
 import os
+import random
+import numpy as np
+import toolmate.files as files
 from collections.abc import Sequence
-from toolmate.files import mkdir
 
 
 def allsametype(seq):
@@ -79,7 +80,7 @@ def mirrorborders(data_):
 
 def savecsv(data, filebasename='file', dirname=os.getcwd(),
             fileindex=None, leadingzeros=1, delimiter=',', **kwargs):
-    mkdir(dirname, silent=True)
+    files.mkdir(dirname, silent=True)
     filepath = dirname + "/" + filebasename
     if isinstance(fileindex, type(None)):
         filepath + '.csv'
@@ -88,3 +89,20 @@ def savecsv(data, filebasename='file', dirname=os.getcwd(),
     np.savetxt(filepath, data, delimiter=',', **kwargs)
 
     return filepath
+
+def sortedsample(base, n=2):
+    """Creates an ordered sorted list based on a given list
+
+    Arguments:
+        base {list} -- list base to sample
+
+    Keyword Arguments:
+        n {int} -- number of elements to sample (default: {2})
+
+    Returns:
+        list -- orderd sorted list
+    """
+    sample_ = random.sample(list(enumerate(base)), n)
+    sortedsample_ = sorted(sample_, key=lambda x:x[0])
+    return [item[1] for item in sortedsample_]
+

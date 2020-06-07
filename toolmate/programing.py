@@ -1,5 +1,5 @@
 import time
-
+import sys
 #  PROGRAMING TOOLS
 #  ---
 
@@ -80,3 +80,37 @@ def progress(indeX, nstep, perc=10, **kwargs):
                   f' | step = {indeX} '\
                   f' {atrs}'
         print(message)
+
+
+class ColorText:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    def __init__(self, defaultcolor=OKGREEN):
+        self.defaultcolor = defaultcolor
+    
+    def colorstring(self, string='', color=None, bold=False, endcolor=True):
+        end = self.ENDC
+        if color is None:
+            color = self.defaultcolor
+        if bold:
+            color += self.BOLD
+        if not endcolor:
+            end = ''
+        return f'{color}{string}{end}'
+    
+    def cprint(self, *objects, color=None, bold=False, endcolor=True, **kwargs):
+        end = self.ENDC
+        if color is None:
+            color = self.defaultcolor
+        if bold:
+            color += self.BOLD
+        if not endcolor:
+            end = ''
+        print(color, *objects, end, **kwargs)
+        return self

@@ -28,14 +28,14 @@ def getscale(u, xrange=(-1, 1)):
         print("Inhomogenous data: ", err)
     if len(_shape) != 1:
         raise ValueError("Can't create 1D scale from array"
-                        f" of shape {_shape}")
+                         f" of shape {_shape}")
     checkhomogeneity = data.allsametype(u)
     if not checkhomogeneity:
-        raise ValueError(f"Inhomogenous list: one element has type {checkhomogeneity}")
+        raise ValueError(
+            f"Inhomogenous list: one element has type {checkhomogeneity}")
     Nx = len(u)
     xscale = np.linspace(xrange[0], xrange[1], Nx)
     return xscale
-
 
 
 def getgrid(u, xrange=(-1, 1), yrange=(-1, 1)):
@@ -57,7 +57,8 @@ def getgrid(u, xrange=(-1, 1), yrange=(-1, 1)):
     return np.meshgrid(xscale, yscale)
 
 
-def plotxy(Y, xrange=(-1, 1), size=(6,6), scaled=True, figname=None, show=True, **kwargs):
+def plotxy(Y, xrange=(-1, 1), size=(6, 6),
+           scaled=True, figname=None, show=True, **kwargs):
     plt.ioff()
     fig = plt.figure(figsize=size)
     X = getscale(Y, xrange=xrange)
@@ -71,7 +72,9 @@ def plotxy(Y, xrange=(-1, 1), size=(6,6), scaled=True, figname=None, show=True, 
     fig.clear()
     plt.close(fig)
 
-def plotf(func, xrange=(-1, 1), dx=0.1, size=(6,6), scaled=True, figname=None, show=True, **kwargs):
+
+def plotf(func, xrange=(-1, 1), dx=0.1, size=(6, 6),
+          scaled=True, figname=None, show=True, **kwargs):
     plt.ioff()
     fig = plt.figure(figsize=size)
     X = np.arange(*xrange, dx)
@@ -84,6 +87,7 @@ def plotf(func, xrange=(-1, 1), dx=0.1, size=(6,6), scaled=True, figname=None, s
         plt.show()
     fig.clear()
     plt.close(fig)
+
 
 def plotsurface(u, xrange=(-1, 1), yrange=(-1, 1),
                 size=(6, 6), cbar=True, scaled=True,
